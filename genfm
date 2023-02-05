@@ -1,0 +1,45 @@
+#!/bin/bash
+# Generate BACRouter firmware file for WebUI upgrading from sysupgrade.bin
+# crc32 is needed
+# Usage:
+# #./genfm bin/targets/ramips/mt7620/openwrt-ramips-mt7620-zbt-wa05-squashfs-sysupgrade.bin
+#
+# them you get a firmware file in the same directory
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 sysupgrade.bin"
+    exit 0
+fi
+
+if [ ! -f $1 ]; then
+    echo "no file found" >> /dev/stderr
+    exit 1
+fi
+
+LOC=$(pwd)
+TMPDIR=$(mktemp -d) || exit 1
+TMPFILE="$TMPDIR/tmpname"
+
+mkdir $TMPDIR/fs
+cp $1 $TMPDIR/fs/sysupgrade.bin
+cd $TMPDIR/fs
+
+cat <<EOF > upgrade
+#!/bin/sh
+sysupgrade -n -F /tmp/fm/sysupgrade.bin&
+sleep 1000000
+EOF
+
+chmod +x $TMPDIR/fs/upgrade
+
+tar czf $TMPFILE *
+cd $LOC
+rm -rf $TMPDIR/fs
+
+CRC32=$(crc32 $TMPFILE)
+
+FILENAME=$(dirname $1)"/openwrt_bacrouter_19.07_$CRC32.tar.gz"
+
+mv $TMPFILE $FILENAME || exit 1
+echo $FILENAME
+rm -r $TMPDIR
