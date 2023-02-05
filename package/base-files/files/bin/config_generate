@@ -84,7 +84,7 @@ generate_network() {
 		static)
 			local ipaddr
 			case "$1" in
-				lan) ipaddr="192.168.1.1" ;;
+				lan) ipaddr="192.168.100.1" ;;
 				*) ipaddr="192.168.$((addr_offset++)).1" ;;
 			esac
 

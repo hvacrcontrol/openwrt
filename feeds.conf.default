@@ -1,8 +1,8 @@
-src-git packages https://github.com/openwrt/packages.git
-src-git luci https://github.com/openwrt/luci.git
-src-git routing https://github.com/openwrt-routing/packages.git
-src-git telephony https://github.com/openwrt/telephony.git
-src-git management https://github.com/openwrt-management/packages.git
+src-git packages https://github.com/openwrt/packages.git^40d611c673aa397048b84ef55518c751124205a7
+src-git luci https://github.com/openwrt/luci.git^0007533e7fb27be589d1121232119cd732be4d53
+src-git routing https://github.com/openwrt-routing/packages.git^3d25d7793535aa524fd3f09a71656fea30c3b73f
+src-git telephony https://github.com/openwrt/telephony.git^6dd432b5be7f27f4a4f49cd0a3e6a2c801b99583
+src-git management https://github.com/openwrt-management/packages.git^213101be50bd0c7bfd5d7d551a8a18b4af69be5d
 src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-svn xwrt http://x-wrt.googlecode.com/svn/trunk/package

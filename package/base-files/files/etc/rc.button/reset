@@ -11,15 +11,19 @@ timeout)
 	set_state failsafe
 ;;
 released)
-	if [ "$SEEN" -lt 1 ]
+	if [ "$SEEN" -gt 3 ]
 	then
-		echo "REBOOT" > /dev/console
+#		echo "FACTORY RESET" > /dev/console
+#		jffs2reset -y && reboot &
+		echo "RESET CONFIG & REBOOT" > /dev/console
+		uci set network.lan.ipaddr=192.168.100.1
+		uci set network.lan.netmask=255.255.255.0
+		uci set network.lan.gateway=0.0.0.0
+		uci commit
+		/etc/init.d/dnsmasq enable
+		echo '{"username":"admin","password":""}' >/root/login.conf
 		sync
 		reboot
-	elif [ "$SEEN" -gt 5 ]
-	then
-		echo "FACTORY RESET" > /dev/console
-		jffs2reset -y && reboot &
 	fi
 ;;
 esac

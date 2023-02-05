@@ -7,7 +7,7 @@
 	model = "Zbtlink ZBT-WA05";
 
 	chosen {
-		bootargs = "console=ttyS0,115200";
+		bootargs = "console=ttyS0,57600";
 	};
 
 	palmbus@10000000 {
@@ -54,7 +54,7 @@
 
 				partition@50000 {
 					label = "firmware";
-					reg = <0x50000 0x760000>;
+					reg = <0x50000 0x7b0000>;
 				};
 			};
 		};
@@ -89,19 +89,9 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		power {
-			label = "zbt-wa05:blue:power";
-			gpios = <&gpio1 14 1>;
-		};
-
-		usb {
-			label = "zbt-wa05:blue:usb";
-			gpios = <&gpio1 15 0>;
-		};
-
-		air {
-			label = "zbt-wa05:blue:air";
-			gpios = <&gpio3 0 1>;
+		status {
+			label = "zbt-wa05:blue:status";
+			gpios = <&gpio3 0 0>;
 		};
 	};
 

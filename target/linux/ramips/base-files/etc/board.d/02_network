@@ -119,10 +119,15 @@ ramips_setup_interfaces()
 	wrtnode|\
 	wrtnode2p | \
 	wrtnode2r | \
-	wt3020|\
-	zbt-wa05)
+	wt3020)
 		ucidef_add_switch "switch0" \
 			"1:lan" "2:lan" "3:lan" "4:lan" "0:wan" "6@eth0"
+		;;
+	zbt-wa05)
+		ucidef_add_switch "switch0"
+		ucidef_add_switch_attr "switch0" "reset" "false"
+		ucidef_add_switch_attr "switch0" "enable" "false"
+		ucidef_set_interface_lan "eth0"
 		;;
 	awapn2403)
 		ucidef_add_switch "switch0" \
@@ -331,6 +336,9 @@ ramips_setup_macs()
 		local index="$(find_mtd_index "board_data")"
 		wan_mac="$(grep -m1 mac= "/dev/mtd${index}" | cut -d= -f2)"
 		lan_mac=$wan_mac
+		;;
+	zbt-wa05)
+		lan_mac=$(cat /sys/class/net/eth0/address)
 		;;
 	*)
 		lan_mac=$(cat /sys/class/net/eth0/address)
