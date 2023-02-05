@@ -423,7 +423,6 @@ zbt-ape522ii)
 	ucidef_set_led_netdev "sys2" "wlan0" "$boardname:green:sys2" "wlan0" "tx rx"
 	;;
 zbt-wa05)
-	set_wifi_led "$boardname:blue:air"
 	;;
 zbt-we826-16M|\
 zbt-we826-32M)

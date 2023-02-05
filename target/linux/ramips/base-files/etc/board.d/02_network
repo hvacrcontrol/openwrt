@@ -254,10 +254,15 @@ ramips_setup_interfaces()
 	wrtnode2p | \
 	wrtnode2r | \
 	youhua,wr1200js|\
-	zbt-wa05|\
 	zyxel,keenetic-extra-ii)
 		ucidef_add_switch "switch0" \
 			"1:lan" "2:lan" "3:lan" "4:lan" "0:wan" "6@eth0"
+		;;
+	zbt-wa05)
+		ucidef_add_switch "switch0"
+		ucidef_add_switch_attr "switch0" "reset" "false"
+		ucidef_add_switch_attr "switch0" "enable" "false"
+		ucidef_set_interface_lan "eth0"
 		;;
 	mikrotik,rbm33g)
 		ucidef_add_switch "switch0" \

@@ -10,35 +10,19 @@
 	model = "Zbtlink ZBT-WA05";
 
 	aliases {
-		led-boot = &led_power;
-		led-failsafe = &led_power;
-		led-running = &led_power;
-		led-upgrade = &led_power;
 	};
 
 	chosen {
-		bootargs = "console=ttyS0,115200";
+		bootargs = "console=ttyS0,57600";
 	};
 
-	leds {
+	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
-			label = "zbt-wa05:blue:power";
-			gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
-		};
-
-		usb {
-			label = "zbt-wa05:blue:usb";
-			gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
-			trigger-sources = <&ohci_port1>, <&ehci_port1>;
-			linux,default-trigger = "usbport";
-		};
-
-		air {
-			label = "zbt-wa05:blue:air";
-			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
-		};
+		status {
+			label = "zbt-wa05:blue:status";
+			gpios = <&gpio3 0 GPIO_ACTIVE_HIGH>;
+                };
 	};
 
 	keys {
@@ -99,7 +83,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x760000>;
+				reg = <0x50000 0x7b0000>;
 			};
 		};
 	};
