@@ -81,20 +81,7 @@ fs_wait_for_key () {
 }
 
 failsafe_wait() {
-	FAILSAFE=
-	[ "$pi_preinit_no_failsafe" = "y" ] && {
-		fs_wait_for_key "" "" $fs_failsafe_wait_timeout
-		return
-	}
-	grep -q 'failsafe=' /proc/cmdline && FAILSAFE=true && export FAILSAFE
-	if [ "$FAILSAFE" != "true" ]; then
-		pi_failsafe_net_message=true
-		preinit_net_echo "Please press button now to enter failsafe"
-		pi_failsafe_net_message=false
-		fs_wait_for_key f 'to enter failsafe mode' $fs_failsafe_wait_timeout && FAILSAFE=true
-		[ -f "/tmp/failsafe_button" ] && FAILSAFE=true && echo "- failsafe button "`cat /tmp/failsafe_button`" was pressed -"
-		[ "$FAILSAFE" = "true" ] && export FAILSAFE && touch /tmp/failsafe
-	fi
+	return
 }
 
 boot_hook_add preinit_main failsafe_wait

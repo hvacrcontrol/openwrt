@@ -1,0 +1,12 @@
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -934,7 +934,8 @@ dtb-$(CONFIG_MACH_SUN8I) += \
+	sun8i-r16-bananapi-m2m.dtb \
+	sun8i-r16-parrot.dtb \
+	sun8i-v3s-licheepi-zero.dtb \
+-	sun8i-v3s-licheepi-zero-dock.dtb
++	sun8i-v3s-licheepi-zero-dock.dtb \
++	sun8i-v3s-bacrouter.dtb
+ dtb-$(CONFIG_MACH_SUN9I) += \
+	sun9i-a80-optimus.dtb \
+	sun9i-a80-cubieboard4.dtb

@@ -35,8 +35,12 @@ define Device/Default
   DEVICE_VARS := SUNXI_DTS SUNXI_UBOOT
   KERNEL_NAME := zImage
   KERNEL := kernel-bin | uImage none
-  IMAGES := sdcard.img.gz
-  IMAGE/sdcard.img.gz := sunxi-sdcard | append-metadata | gzip
+  DEVICE_DTS = $$(SUNXI_DTS)
+  IMAGES := sysupgrade.bin
+  BLOCKSIZE := 64k
+  IMAGE_SIZE := 16286k
+  IMAGE/sysupgrade.bin = append-kernel | append-rootfs | pad-rootfs | \
+         append-metadata | check-size $$$$(IMAGE_SIZE)
 endef
 
 include cortex-a7.mk

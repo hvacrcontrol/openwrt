@@ -208,6 +208,16 @@ endef
 TARGET_DEVICES += sun8i-h3-orangepi-2
 
 
+define Device/sun8i-v3s-bacrouter
+  DEVICE_TITLE:=SWG BACRouter
+  DEVICE_PACKAGES:=kmod-leds-gpio kmod-ledtrig-heartbeat
+  SUPPORTED_DEVICES:=swg,bacrouter
+  SUNXI_DTS:=sun8i-v3s-bacrouter
+endef
+
+TARGET_DEVICES += sun8i-v3s-bacrouter
+
+
 define Device/sun7i-a20-pcduino3
   DEVICE_TITLE:=LinkSprite pcDuino3
   DEVICE_PACKAGES:=kmod-sun4i-emac kmod-rtc-sunxi kmod-ata-core kmod-ata-sunxi kmod-rtl8xxxu rtl8188eu-firmware

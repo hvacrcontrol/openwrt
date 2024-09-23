@@ -216,6 +216,12 @@ define U-Boot/pine64_plus
   UENV:=a64
 endef
 
+define U-Boot/bacrouter
+  BUILD_SUBTARGET:=cortexa7
+  NAME:=SWG BACRouter (V3s)
+  BUILD_DEVICES:=sun8i-v3s-bacrouter
+endef
+
 define U-Boot/Sinovoip_BPI_M2_Plus
   BUILD_SUBTARGET:=cortexa7
   NAME:=Bananapi M2 Plus
@@ -280,6 +286,7 @@ UBOOT_TARGETS := \
 	orangepi_pc2 \
 	pangolin \
 	pine64_plus \
+	bacrouter \
 	Sinovoip_BPI_M2_Plus \
 	sopine_baseboard \
 	orangepi_zero_plus
