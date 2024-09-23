@@ -231,3 +231,12 @@ define Device/xunlong_orangepi-2
   SOC := sun8i-h3
 endef
 TARGET_DEVICES += xunlong_orangepi-2
+
+define Device/sun8i-v3s_bacrouter
+  DEVICE_VENDOR := SWG
+  DEVICE_MODEL := BACRouter
+  DEVICE_PACKAGES:=kmod-leds-gpio kmod-ledtrig-heartbeat
+  SUPPORTED_DEVICES:=swg,bacrouter
+  SOC := sun8i-v3s
+endef
+TARGET_DEVICES += sun8i-v3s_bacrouter
