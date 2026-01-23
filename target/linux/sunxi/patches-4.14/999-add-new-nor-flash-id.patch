@@ -1,0 +1,26 @@
+Index: linux-4.14.275/drivers/mtd/spi-nor/spi-nor.c
+===================================================================
+--- linux-4.14.275.orig/drivers/mtd/spi-nor/spi-nor.c
++++ linux-4.14.275/drivers/mtd/spi-nor/spi-nor.c
+@@ -1213,6 +1213,21 @@ static const struct flash_info spi_nor_i
+ 	/* XMC (Wuhan Xinxin Semiconductor Manufacturing Corp.) */
+ 	{ "XM25QH64A", INFO(0x207017, 0, 64 * 1024, 128, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ "XM25QH128A", INFO(0x207018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
++	{
++		"zd25q128c", INFO(0xba4018, 0, 64 * 1024, 256,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
++	},
++	{
++		"py25q128ha", INFO(0x852018, 0, 64 * 1024, 256,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
++	},
++	{
++		"by25q128as", INFO(0x684018, 0, 64 * 1024, 256,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
++	},
+ 	{ },
+ };
+ 
